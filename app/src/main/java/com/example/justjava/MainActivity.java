@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -13,6 +15,8 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 int quantity = 0;
+EditText namaEditText;
+String nama;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,18 +27,41 @@ int quantity = 0;
         display(quantity);
     }
     public void decrement (View view) {
-        quantity = quantity - 1;
-        if (quantity < 0) {
-            System.out.println("Tidak Boleh Kurang dari Nol!");
+        if (quantity > 0) {
+            quantity = quantity - 1;
+            display(quantity);
         }
-        System.out.println("Terima kasih.");
-        display(quantity);
     }
     public void submitOrder(View view) {
-        int price = quantity * 5000;
-        String priceMessage = "Total pembelian Rp. " + price;
-        priceMessage = priceMessage + "\nSuwun Luurrr. ";
+        CheckBox wiphedCreamCheckbox = (CheckBox) findViewById(R.id.whipped_checkbox);
+        CheckBox chocoCheckbox  = (CheckBox) findViewById(R.id.chocolate_checkbox);
+        namaEditText = (EditText) findViewById(R.id.name_field);
+
+        boolean hasWiphedCream = wiphedCreamCheckbox.isChecked();
+        boolean hasChocolate    = chocoCheckbox.isChecked();
+        nama = namaEditText.getText().toString();
+
+        int price = calculatePrice(hasWiphedCream, hasChocolate);
+
+        String priceMessage = "Jumlah pembelian " + quantity + "cangkir" +
+                "\nWhipped Cream: " + hasWiphedCream +
+                "\nChocolate: " + hasChocolate +
+                "\nTotal Pembelian Rp " + price +
+                "\nSuwun bro " + nama;
         displayMessage(priceMessage);
+    }
+
+    private int calculatePrice(boolean addWiphedCream, boolean addChocolate) {
+        int basePrice = 5000;
+        int price = 0;
+        if(addWiphedCream) {
+            basePrice = basePrice + 1000;
+        }
+        if (addChocolate) {
+            basePrice = basePrice + 2000;
+        }
+
+        return price = quantity * basePrice;
     }
 
     private void displayMessage(String message) {
