@@ -8,7 +8,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/mshk">
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,18 +19,20 @@
         android:inputType="textCapWords"
         android:textSize="23sp"
         android:paddingTop="16dp"
-        android:paddingLeft="16dp" />
+        android:paddingLeft="16dp"
+        android:background="@color/colorAccent"/>
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Topping"
         android:textSize="30sp"
         android:paddingTop="16dp"
+        android:textAlignment="center"
         android:paddingLeft="16dp"/>
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Whipped Cream"
+        android:text="Whipped Cream (+ 1k)"
         android:textSize="25sp"
         android:paddingTop="16dp"
         android:paddingLeft="16dp"
@@ -37,7 +40,7 @@
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Chocolate"
+        android:text="Chocolate (+ 2k)"
         android:textSize="25sp"
         android:paddingTop="16dp"
         android:paddingLeft="16dp"
@@ -89,7 +92,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PRICE"
+        android:text="Harga Per Cangkir 5k"
         android:textSize="30sp"
         android:paddingTop="16dp"
         android:paddingLeft="16dp"/>
